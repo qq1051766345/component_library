@@ -4,12 +4,17 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+
+import Button from './button';
+
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <Button className="my-btn" type='primary'>click me</Button>
+    <Button type='primary'>点我</Button>
   </React.StrictMode>
 );
 
