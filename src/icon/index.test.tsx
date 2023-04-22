@@ -19,7 +19,7 @@ describe('Icon',() => {
   test('icon click',() => {
     // 模拟一个事件
     const onClick  = jest.fn();
-    const {container} = render(<Icon type='fixed' OnClick={onClick}></Icon>);
+    const {container} = render(<Icon type='fixed' onClick={onClick}></Icon>);
     fireEvent.click(container.querySelector('.ant-icon-fixed') as HTMLElement);
     expect(onClick).toBeCalled;
   })
