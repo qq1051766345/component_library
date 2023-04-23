@@ -1,0 +1,35 @@
+import React from 'react';
+import { fireEvent, render, screen } from '@testing-library/react';
+import {{componentName}} from '.';
+
+describe('{{componentName}}',() => {
+  /* 组件渲染 */
+  test('renders {{componentname}}', () => {
+    render(<{{componentName}}>click me</{{componentName}}>);
+    const linkElement = screen.getByText(/click me/i);
+    expect(linkElement).toBeInTheDocument();
+  });
+  
+  /* 组件样式 */
+  test('renders Primary {{componentName}}', () => {
+    const { container } =  render(<{{componentName}} type='primary'>click me</{{componentName}}>);
+    expect(container.querySelector('.ant-btn-primary')).toBeInTheDocument;
+  });
+
+  
+  test('should suppot click', () => {
+    const onClick = jest.fn();
+    render(<{{componentName}} type='primary' onClick={onClick}>click me</{{componentName}}>);
+    const linkElement = screen.getByText(/click me/i);
+    fireEvent.click(linkElement)
+    expect(onClick).toBeCalled();
+  });
+
+  /* 组件大小 */
+  test('{{componentname}} size', () => {
+    const {debug} = render(<{{componentName}} type='primary' size='lg'>click me</{{componentName}}>);
+    const linkElement = screen.getByText(/click me/i);
+    debug(linkElement);
+    expect(linkElement).toHaveClass('ant-btn-lg')
+  });
+})

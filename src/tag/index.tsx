@@ -10,8 +10,8 @@ interface tagProps {
   closeable?: boolean;
   color?: string;
   visible?: boolean;
-  onClose?: boolean;
-  children?: string;
+  onClose?: Function;
+  children?: any;
   style?:React.CSSProperties;
 }
 
@@ -21,10 +21,17 @@ const Tag = (props: tagProps) => {
     className,
     children,
     color,
-    visible: pvisible,
+    onClose,
     ...others
   } = props;
-  const [visible, setVisible] = useState<boolean>(pvisible || true);
+
+  const [visible, setVisible] = useState<boolean>(true);
+
+  React.useEffect(() => {
+    if('visible' in props && (typeof props.visible !== 'undefined')){
+      setVisible(props.visible);
+    }
+  },[props.visible])
 
   const customColor = color && color.match(/^#/);
   const style:React.CSSProperties  = {
@@ -40,8 +47,16 @@ const Tag = (props: tagProps) => {
     [`ant-tag-${color}`]: color && !customColor,
   });
   
-  const handleClick = () => {
-    setVisible(false);
+  const handleClick = (e:React.MouseEvent<HTMLElement>) => {
+    onClose?.(e)
+    if(e.defaultPrevented){
+      /* 如果默认事件被阻止了 */
+      return ;
+    }
+    if(!('visible' in props)){
+      /* 如果visible不在就可以关掉 */
+      setVisible(false);
+    }
   };
 
   if (!visible) {
@@ -51,7 +66,7 @@ const Tag = (props: tagProps) => {
   return (
     <span className={cls} style={style}>
       {children}
-      {closeable ? (
+      {closeable || onClose ? (
         <Icon
           type="close"
           size={10}

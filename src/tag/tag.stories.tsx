@@ -13,10 +13,33 @@ export default meta;
 type Story = StoryObj<typeof Tag>;
 
 export const Basic = () => {
+  const log = (e: React.MouseEvent<HTMLElement>) => {
+    console.log(e);
+  };
+
+  const preventDefault = (e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault();
+    console.log("Clicked! But prevent default.");
+  };
+
   return (
     <>
-      <Tag closeable={true}>Tag 1</Tag>
-      <Tag color="magenta" closeable={true}>magenta</Tag>
+      <Tag>Tag 1</Tag>
+      <Tag>
+        <a href="https://github.com/ant-design/ant-design/issues/1862">Link</a>
+      </Tag>
+      <Tag closeable onClose={log}>
+        Tag 2
+      </Tag>
+      <Tag closeable onClose={preventDefault}>
+        Prevent Default
+      </Tag>
+      <Tag closeable visible>
+        tag3
+      </Tag>
+      <Tag color="magenta" closeable={true}>
+        magenta
+      </Tag>
       <Tag color="red">red</Tag>
       <Tag color="volcano">volcano</Tag>
       <Tag color="orange">orange</Tag>
@@ -31,12 +54,6 @@ export const Basic = () => {
       <Tag color="#2db7f5">#2db7f5</Tag>
       <Tag color="#87d068">#87d068</Tag>
       <Tag color="#108ee9">#108ee9</Tag>
-      {/*  <Tag closable onClose={log}>
-      Tag 2
-    </Tag>
-    <Tag closable onClose={preventDefault}>
-      Prevent Default
-    </Tag> */}
     </>
   );
 };

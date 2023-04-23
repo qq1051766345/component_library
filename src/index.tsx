@@ -13,8 +13,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <Button className="my-btn" type='primary'>click me</Button>
-    <Button type='primary'>点我</Button>
+    <App/>
   </React.StrictMode>
 );
 
