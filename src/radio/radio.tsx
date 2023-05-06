@@ -1,18 +1,9 @@
-/*
- * @Author: “邓浩” “1051766345@qq.com”
- * @Date: 2023-04-24 20:59:41
- * @LastEditors: “邓浩” “1051766345@qq.com”
- * @LastEditTime: 2023-05-03 16:56:45
- * @FilePath: /my-app/src/radio/radio.tsx
- * @Description: 
- * 
- * Copyright (c) 2023 by ${git_name_email}, All Rights Reserved. 
- */
 import React, { CSSProperties,ReactNode, useState,useRef, useEffect } from "react";
 import classNames from "classnames";
 import './index.scss'
 
 export interface radioProps extends React.HTMLAttributes<HTMLInputElement>{
+  value?:string;
   /* 类名 */
   className?:string;
   /* 组件之间的文字内容 */
@@ -30,7 +21,7 @@ const Radio = (props:radioProps) => {
 
   const [checked,setChecked] = useState<boolean>(false);
   const inputEL:React.RefObject<HTMLInputElement> = useRef(null);
-  const {style,children,onChange,disabled,...others} = props;
+  const {style,children,onChange,disabled,value,...others} = props;
   const cls = classNames({
     'ant-radio':true,
     'ant-radio-checked':checked,
@@ -67,7 +58,7 @@ const Radio = (props:radioProps) => {
   return <>
     <span className={wrapperCls} onClick={clickHandler}>
       <span className={cls}>
-        <input type="radio" className="ant-radio-input" ref={inputEL}/>
+        <input type="radio" className="ant-radio-input" ref={inputEL} value={value}/>
         <span className="ant-radio-inner"></span>
       </span>
       <span>{children}</span>
