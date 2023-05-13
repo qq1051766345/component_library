@@ -3,6 +3,7 @@ import React, {
   ReactNode,
   useState,
   useEffect,
+  Children
 } from "react";
 import classNames from "classnames";
 import "./index.scss";
@@ -22,6 +23,8 @@ export interface radioProps extends React.HTMLAttributes<HTMLInputElement> {
   defaultChecked?: boolean;
   disabled?: boolean;
 }
+
+
 const RadioGroup = (props: radioProps) => { 
   const [checked, setChecked] = useState<boolean>(false);
   const { style, children, onChange, disabled, ...others } = props;
@@ -38,7 +41,7 @@ const RadioGroup = (props: radioProps) => {
     setValue(value);
   }
 
-  const newChildren = React.Children.map(children, (child:any) => {
+  const newChildren = Children.map(children, (child:any) => {
     if(child.type !== Radio) return;
     return React.cloneElement(child as React.ReactElement<any>, {
       checked: child.props.value === value,

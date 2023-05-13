@@ -2,7 +2,7 @@
  * @Author: “邓浩” “1051766345@qq.com”
  * @Date: 2023-04-24 20:59:41
  * @LastEditors: “邓浩” “1051766345@qq.com”
- * @LastEditTime: 2023-05-06 21:42:39
+ * @LastEditTime: 2023-05-07 18:45:16
  * @FilePath: /my-app/src/radio/group.stories.tsx
  * @Description:
  *
@@ -33,7 +33,7 @@ export const GroupRadio: Story = {
       <Radio key="2" value="2">
         选项2
       </Radio>,
-      <Radio key="2" value="3">
+      <Radio key="3" value="3">
         选项3
       </Radio>,
     ],
@@ -43,9 +43,9 @@ export const GroupRadio: Story = {
 export const underControl = () => {
   return <>
     <RadioGroup value="2">
-      <Radio value="1">选项1</Radio>
-      <Radio value="2">选项2</Radio>
-      <Radio value="3">选项3</Radio>,
+      <Radio value="1" key={1}>选项1</Radio>
+      <Radio value="2" key={2}>选项2</Radio>
+      <Radio value="3" key={3}>选项3</Radio>,
     </RadioGroup>
   </>
 };
