@@ -7,7 +7,7 @@ import React, {
 } from "react";
 import classNames from "classnames";
 import "./index.scss";
-import Radio from "./radio";
+import Radio from "./Radio";
 
 export interface radioProps extends React.HTMLAttributes<HTMLInputElement> {
   value?: string;

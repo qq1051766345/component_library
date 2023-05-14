@@ -47,7 +47,6 @@ const Radio = (props:radioProps) => {
       setChecked(true);
     }
     
-    setChecked(true);
     /* 点击事件 */
     if(typeof onChange === 'function'){
       e.target = inputEL.current;

@@ -12,6 +12,19 @@ const meta: Meta<typeof Tag> = {
 export default meta;
 type Story = StoryObj<typeof Tag>;
 
+function log(e: React.MouseEvent<HTMLElement>) {
+  console.log(e);
+}
+
+export const Tags: Story = {
+  args: {
+    color: "red",
+    children: "Tag 1",
+    closeable: true,
+    onClose: log
+  },
+}
+
 export const Basic = () => {
   const log = (e: React.MouseEvent<HTMLElement>) => {
     console.log(e);

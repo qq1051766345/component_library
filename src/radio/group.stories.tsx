@@ -2,7 +2,7 @@
  * @Author: “邓浩” “1051766345@qq.com”
  * @Date: 2023-04-24 20:59:41
  * @LastEditors: “邓浩” “1051766345@qq.com”
- * @LastEditTime: 2023-05-07 18:45:16
+ * @LastEditTime: 2023-05-14 14:26:21
  * @FilePath: /my-app/src/radio/group.stories.tsx
  * @Description:
  *
@@ -11,7 +11,9 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import Radio from ".";
-import RadioGroup from './Group';
+
+
+const RadioGroup = Radio.Group
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof RadioGroup> = {
